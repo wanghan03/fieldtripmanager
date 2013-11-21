@@ -3,14 +3,29 @@ require 'mysql.php';
 
 class validate {
 	
-	function validate_user($user, $pass) {
+	function login($username, $pass) {
 		$mysql = new mysql();
-		$valid = $mysql->check_database($user, sha1($pass));
+		$valid = $mysql->check_database($username, sha1($pass));
 		
 		if($valid) {
-			$_SESSION['status'] = 'authorized';
-			header("location: index.php");
-		} else return "Please enter a valid username or password";
+			if ($mysql->get_privilege($username) == 1) {
+				$_SESSION['status'] = 'authorizedstudent';
+				header("location: student.php");
+			}
+			if ($mysql->get_privilege($username) == 2) {
+				$_SESSION['status'] = 'authorizedattendance';
+				header("location: attendance.php");
+			}
+			if ($mysql->get_privilege($username) == 3) {
+				$_SESSION['status'] = 'authorizedteacher';
+				header("location: teacher.php");
+			}
+			if ($mysql->get_privilege($username) == 4) {
+				$_SESSION['status'] = 'authorizedadmin';
+				header("location: admin.php");
+			}
+		} else //return $mysql->get_privilege($username);//
+		return "Please enter a valid username or password";
 		
 	} 
 	
@@ -23,10 +38,28 @@ class validate {
 		}
 		header("location: login.php");
 	}
-	
-	function confirm_login() {
+	function confirm_student() {
 		session_start();
-		if($_SESSION['status'] !='authorized') header("location: login.php");
+		if($_SESSION['status'] !='authorizedstudent') {
+		header("location: login.php");
+		}
 	}
-	
+	function confirm_attendance() {
+		session_start();
+		if($_SESSION['status'] !='authorizedattendance') {
+		header("location: login.php");
+		}
+	}
+	function confirm_teacher() {
+		session_start();
+		if($_SESSION['status'] !='authorizedteacher') {
+		header("location: login.php");
+		}
+	}
+	function confirm_admin() {
+		session_start();
+		if($_SESSION['status'] !='authorizedadmin') {
+		header("location: login.php");
+		}
+	}
 }
