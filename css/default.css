@@ -1,0 +1,62 @@
+body{
+	font-family: "Lato", helvetica, sans-serif;
+}
+#login{
+	text-align: center;
+	min-height: 330px;
+	width: 705px;
+	position: absolute;
+	left: 50%;
+	margin-left: -352px;
+	top: 50%;
+	margin-top: -165px;
+}
+
+h2 {
+	padding: 15px 0 15px 75px;
+	margin-top: 25px;
+	font-size: 40px;
+	color: #2F2F2F;
+	width: 676px;
+	height: 73px;
+	position: relative;
+	left: -53px;
+	}
+	
+small {
+	font-size: 20px;
+}
+	
+label {
+	font-size: 24px;
+}
+
+input {
+	width: 40%;
+	height: 30px;
+	position: relative;
+	top: -4px;
+	font-size: 20px;
+	padding: 4px;
+	color: #555555;
+}
+
+input#submit {
+	width: 55%;
+}
+
+h4 {
+	color: #8B0000;
+	font-size: 14px;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 6px;
+	line-height: 19px;
+	position: relative;
+}
+
+#placeholder{
+	visibility: hidden;
+}
+
