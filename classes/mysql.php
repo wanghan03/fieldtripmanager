@@ -29,10 +29,12 @@ class mysql {
 			}
 		}
 	}
-	function get_privilege($username){
+	
+	function get_userinfo($username, $column){
 		$result = $this->conn->query("SELECT * FROM USER WHERE username = '$username' LIMIT 1");
-		if ($privilege = mysqli_fetch_array($result)){
-			return $privilege['privilege'];
-		} return 0;
+		if ($data = mysqli_fetch_array($result)){
+			return $data[$column];
+		}
+		return 0;
 	}
 }

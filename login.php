@@ -5,6 +5,7 @@ $validate = new validate(); // instantiation
 
 // if the the username and password field is not empty, validate the user
 if($_POST && !empty($_POST['username']) && !empty($_POST['pass'])) {
+	$_SESSION['user'] = $_POST['username'];
 	$response = $validate->login($_POST['username'], $_POST['pass']);
 }
 
@@ -45,7 +46,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'logout') {
     	
     	// display current date and time
 	    date_default_timezone_set('America/New_York');
-		echo "Accessed: " . date("Y-m-d H:i:s");
+		echo date("Y-m-d");//"Accessed: " . date("Y-m-d H:i:s");
     ?>
 </div><!--end login-->
 </body>

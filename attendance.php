@@ -16,7 +16,7 @@ $validate->confirm_attendance();
 	<p>
     	
     </p>
-    <a href="login.php?status=logout">Log Out</a>
+    <a href="login?status=logout">Log Out</a>
 </div><!--end container-->
 
 </body>
