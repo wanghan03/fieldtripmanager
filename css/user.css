@@ -1,16 +1,19 @@
 body{
-	font-family: "Lato", helvetica, sans-serif;
+	font-family: "Open Sans", helvetica, sans-serif;
 }
-#navigation {
-	li { display:inline; 
-	
-	}
+#header{
+	font-family: "Raleway", sans-serif;
+	border: 1.5px solid #a1a1a1;
+	border-radius: 6px;
+	padding: 4px;
+	position: absolute;
+	right:5px;
+	top:3px;
+}
 
-	ul {
-		list-style-type:none;
-		margin:0;
-		padding:0;
-	}
+li{
+	text-decoration: underline;
+	color:#0000FF;
 }
 
 #footer{
