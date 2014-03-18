@@ -10,6 +10,32 @@ $validate->confirm_teacher();
 $mysql = new mysql();
 $userid = $mysql->get_userinfo($_SESSION['user'], 'userid');
 $name = $mysql->get_userinfo($_SESSION['user'], 'name');
+
+// header
+include("studentpages/header.php");
+
+$getpage = isset($_GET['page']) ? $_GET['page'] : "";
+
+	switch($getpage){
+		case NULL:
+			include("teacherpages/home.php");
+			break;
+		case "home":
+			include("teacherpages/home.php");
+			break;
+		case "index":
+			include("teacherpages/home.php");
+			break;
+		case "fieldtrip":
+			include("teacherpages/fieldtrip.php");
+			break;
+		case "request":
+			include("teacherpages/request.php");
+			break;
+		case "about":
+			include("teacherpages/about.php");
+		break;
+		}
 ?>
 
 <html>
@@ -21,10 +47,6 @@ $name = $mysql->get_userinfo($_SESSION['user'], 'name');
 
 <body>
 
-<div id="header">
-<?php echo "Welcome $name&nbsp&nbsp|&nbsp&nbsp";?>
-<a href="login?status=logout" class = "logout">Log Out</a>
-</div>
 
 </body>
 </html>

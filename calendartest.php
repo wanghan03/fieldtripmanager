@@ -90,11 +90,11 @@ echo '<h2 >'.date(F).' '.date(Y).'</h2>';
 $calendar = new calendar();
 echo $calendar->draw_calendar(date(m),date(Y),$events);
 
-?>
 
 
 
-<!--
+
+
 /* CONTROLS */
 
 /* date settings */
@@ -122,7 +122,7 @@ $next_month_link = '<a href="?month='.($month != 12 ? $month + 1 : 1).'&year='.(
 /* "previous month" control */
 $previous_month_link = '<a href="?month='.($month != 1 ? $month - 1 : 12).'&year='.($month != 1 ? $year : $year - 1).'" class="control"><< 	Previous Month</a>';
 
-/* bringing the controls together *
+/* bringing the controls together */
 $controls = '<form method="get">'.$select_month_control.$select_year_control.' <input type="submit" name="submit" value="Go" />      '.$previous_month_link.'     '.$next_month_link.' </form>';
 
 echo $controls;
@@ -131,4 +131,4 @@ echo $controls;
 $monthName = date("F", mktime(0, 0, 0, $month, 10));
 echo "<h2>" . $monthName . " " . $year . "</h2>";
 echo draw_calendar($month,$year);
-*/
+?>
