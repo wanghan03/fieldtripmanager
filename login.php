@@ -17,8 +17,8 @@ if(isset($_GET['status']) && $_GET['status'] == 'logout') {
 
 <html>
 <head>
-<title>Login</title>
-<link rel="stylesheet" type="text/css" href="css/default.css" />
+<title>Login | Field Trip Manager</title>
+<link rel="stylesheet" type="text/css" href="css/login.css" />
 <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
 </head>
 
@@ -47,6 +47,10 @@ if(isset($_GET['status']) && $_GET['status'] == 'logout') {
     	// display current date and time
 	    date_default_timezone_set('America/New_York');
 		echo date("Y-m-d");//"Accessed: " . date("Y-m-d H:i:s");
+		echo "<br>";
+		echo "<br>Test Admin | username: admin, password: admin";
+		echo "<br>Test Teacher | username: teacher, password: teacher";
+		echo "<br>Test Student | username: student, password: student";
     ?>
 </div><!--end login-->
 </body>

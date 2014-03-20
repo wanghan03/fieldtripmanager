@@ -1,4 +1,5 @@
 <?php
+// inheritance
 require_once 'classes/validate.php';
 require_once 'classes/mysql.php';
 require_once 'classes/calendar.php';
@@ -18,6 +19,7 @@ $calendar = new calendar();
 // header
 include("adminpages/header.php");
 
+// determine what page to display
 $getpage = isset($_GET['page']) ? $_GET['page'] : "";
 
 	switch($getpage){
@@ -40,21 +42,18 @@ $getpage = isset($_GET['page']) ? $_GET['page'] : "";
 			include("adminpages/waiting.php");
 		break;
 		}
+
+// footer
+include("adminpages/footer.php");
 ?>
 
+<!--HTML-->
 <html>
+<!--Title & CSS-->
 <head>
 <link rel="stylesheet" href="css/user.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Raleway:300' rel='stylesheet' type='text/css'>
-<title></title>
+<title>Administrator | Field Trip Manager</title>
 </head>
-
-<body>
-<!--FOOTER-->
-<?php
-include("adminpages/footer.php");
-?>
-</body>
-
 </html>
 

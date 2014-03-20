@@ -1,7 +1,7 @@
 
 <div id="logout">
 <?php echo "Welcome $name&nbsp&nbsp|&nbsp&nbsp";?>
-<a href="login?status=logout" class = "logout">Log Out</a>
+<a href="login.php?status=logout" class = "logout">Log Out</a>
 </div>
 
 <div id="nav">

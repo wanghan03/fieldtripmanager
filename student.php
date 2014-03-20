@@ -36,13 +36,16 @@ $getpage = isset($_GET['page']) ? $_GET['page'] : "";
 			include("studentpages/about.php");
 		break;
 		}
+		
+// footer	
+include("adminpages/footer.php");
 ?>
 
 <html>
 <head>
 <link rel="stylesheet" href="css/user.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Raleway:300' rel='stylesheet' type='text/css'>
-<title></title>
+<title>Student | Field Trip Manager</title>
 </head>
 
 <body>

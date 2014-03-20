@@ -12,7 +12,7 @@ $userid = $mysql->get_userinfo($_SESSION['user'], 'userid');
 $name = $mysql->get_userinfo($_SESSION['user'], 'name');
 
 // header
-include("studentpages/header.php");
+include("teacherpages/header.php");
 
 $getpage = isset($_GET['page']) ? $_GET['page'] : "";
 
@@ -32,17 +32,23 @@ $getpage = isset($_GET['page']) ? $_GET['page'] : "";
 		case "request":
 			include("teacherpages/request.php");
 			break;
+		case "request2":
+			include("teacherpages/request2.php");
+			break;
 		case "about":
 			include("teacherpages/about.php");
 		break;
 		}
+		
+// footer	
+include("adminpages/footer.php");
 ?>
 
 <html>
 <head>
 <link rel="stylesheet" href="css/user.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Raleway:300' rel='stylesheet' type='text/css'>
-<title></title>
+<title>Teacher | Field Trip Manager</title>
 </head>
 
 <body>

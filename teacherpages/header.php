@@ -1,7 +1,6 @@
-
 <div id="logout">
 <?php echo "Welcome $name&nbsp&nbsp|&nbsp&nbsp";?>
-<a href="login?status=logout" class = "logout">Log Out</a>
+<a href="login.php?status=logout" class = "logout">Log Out</a>
 </div>
 
 <div id="nav">
@@ -10,7 +9,7 @@
 <center>
 <li><a></a></li>
 <li><a href="?page=index">Home</a></li>
-<li><a href="?page=fieldtrip">Field Trips</a></li>
+<li><a href="?page=fieldtrip">My Field Trips</a></li>
 <li><a href="?page=request">Request</a></li>
 <li><a href="?page=about">About</a></li>
 </center>

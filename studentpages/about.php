@@ -1,8 +1,8 @@
 <center><h1><span>About</span></h1></center>
 
-<img style="position:absolute; left:360px; top:215px;" src="./images/logo.png" alt="logo" width="137" height="138" />
+<img style="position:absolute; margin-left:25%; top:215px;" src="./images/logo.png" alt="logo" width="137" height="138" />
 
-<p style="position:absolute; right:310px;">
+<p style="position:absolute; margin-left:60%;">
 Contact Us
 <br>Novi High School
 <br>24062 Taft Road

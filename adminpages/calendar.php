@@ -4,10 +4,14 @@
 </head>
 <body>
 <?php
-$events = array();
-$events['2014-03-14'][] = 'Event11111112132131231231231231';
-$events['2014-03-14'][] = 'Event2';
-$events['2014-03-01'][] = 'Event3';
+$array = $mysql->get_alltrips();
+$events = array(); // [date][destination]
+for($row = 0; $row < count($array); $row++){
+	$date = $array[$row][date];
+	$destination = $array[$row][destination];
+	$events[$date][] = $destination;
+}
+
 
 $month = (int) ($_GET['month'] ? $_GET['month'] : date('m'));
 $year = (int)  ($_GET['year'] ? $_GET['year'] : date('Y'));
@@ -35,9 +39,11 @@ $nextMonth = '<a id="links" href="?page=calendar&month='.($month != 12 ? $month 
 
 $previousMonth = '<a id="links" href="?page=calendar&month='.($month != 1 ? $month - 1 : 12).'&year='.($month != 1 ? $year : $year - 1).'" class="control"><<	Previous Month</a>';
 
+$today = '<a id="links" href="?page=calendar&month='.(int)date('m').'&year='.date('Y').'" class="control">Today</a>';
+
 $page = '<select name="page" id="hidden"><option value="calendar"></option></select>';
 
-$controls = '<form method="get">'.$page.$selectMonth.$selectYear.' <input type="submit" name="submit" value="Go" /></br>'.$previousMonth.'&nbsp&nbsp&nbsp'.$nextMonth.' </form>';
+$controls = '<form method="get">'.$page.$selectMonth.$selectYear.' <input type="submit" name="submit" value="Go" /></br>'.$previousMonth.'&nbsp&nbsp'.$today.'&nbsp&nbsp'.$nextMonth.' </form>';
 
 /* display */
 $monthName = date("F", mktime(0, 0, 0, $month, 10));

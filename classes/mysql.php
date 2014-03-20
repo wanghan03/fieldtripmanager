@@ -37,4 +37,38 @@ class mysql {
 		}
 		return 0;
 	}
+	
+	function get_fieldtrips($userid){
+		$result = $this->conn->query("SELECT * FROM FIELD_TRIP WHERE userid = '$userid'");
+		$array = array();
+		if ($data = mysqli_fetch_array($result)){
+			$array[] = $data; //2D array
+			while ($data = mysqli_fetch_array($result)){
+				$array[] = $data;
+			}
+			return $array;
+		}
+		return 0;
+	}
+	
+	function get_alltrips(){
+		$result = $this->conn->query("SELECT * FROM FIELD_TRIP");
+		$array = array();
+		if ($data = mysqli_fetch_array($result)){
+			$array[] = $data; //2D array
+			while ($data = mysqli_fetch_array($result)){
+				$array[] = $data;
+			}
+			return $array;
+		}
+		return 0;
+	}
+	
+	function new_trip($userid,$date,$startTime,$endTime,$destination,$classhour,$numstudent,$cost,$fund,$objective,$classactivities,$why,$followup){
+		$this->conn->query("INSERT INTO FIELD_TRIP (userid, date, startTime, endTime, destination, classhour, numstudent, cost, fund, objective, classactivities, why, followup) VALUES ('$userid','$date','$startTime','$endTime','$destination','$classhour','$numstudent','$cost','$fund','$objective','$classactivities','$why','$followup')");	
+	}
+	/* delete
+	function delete_trip($date, $destination, $startTime, $endTime){
+		$this->conn->query("DELETE FROM FIELD_TRIP WHERE date='$date', destination='destination', ");
+	}//DELETE FROM `test`.`FIELD_TRIP` WHERE `field_trip`.`eventid` = 2*/
 }
