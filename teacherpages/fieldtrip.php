@@ -4,6 +4,7 @@ $today = date(Y).'-'.date(m).'-'.date(d);
 $array = $mysql->get_fieldtrips($userid);
 $display = '<div id="list">';
 $count = 0;
+
 if ($array != 0){
 	for($row = 0; $row < count($array); $row++){
 		if ($array[$row][date]>=$today){
@@ -15,9 +16,17 @@ if ($array != 0){
 			$display .= '>'.$array[$row][destination];
 			$display .= ' ('.$array[$row][startTime].' -';
 			$display .= ' '.$array[$row][endTime].')';
-			$display .= '<br><input type=submit value="Delete this Trip">';
+			$display .= '<br>Class/Hour: '.$array[$row][classhour];
+			//
+			$destination = str_replace(" ", "+", $array[$row][destination]);
+			$start = str_replace(":", "%3A", $array[$row][startTime]);
+			$end = str_replace(":", "%3A", $array[$row][endTime]);
+			$class = str_replace(" ", "+", $array[$row][classhour]);
+			
+			$display .= '<br><form method=post action="?page=deleted&date='.$array[$row][date].'&destination='.$destination.'&start='.$start.'&end='.$end.'&class='.$class.'"><input type=submit value="Delete this Trip"></form>';
 			$display .='</p>';
 			$count++;
+			//" onclick="delete('.$array[$row][date].','.$array[$row][destination].','.$array[$row][startTime].','.$array[$row][endTime].');
 		}
 	}
 }

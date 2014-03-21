@@ -67,8 +67,8 @@ class mysql {
 	function new_trip($userid,$date,$startTime,$endTime,$destination,$classhour,$numstudent,$cost,$fund,$objective,$classactivities,$why,$followup){
 		$this->conn->query("INSERT INTO FIELD_TRIP (userid, date, startTime, endTime, destination, classhour, numstudent, cost, fund, objective, classactivities, why, followup) VALUES ('$userid','$date','$startTime','$endTime','$destination','$classhour','$numstudent','$cost','$fund','$objective','$classactivities','$why','$followup')");	
 	}
-	/* delete
+
 	function delete_trip($date, $destination, $startTime, $endTime){
-		$this->conn->query("DELETE FROM FIELD_TRIP WHERE date='$date', destination='destination', ");
-	}//DELETE FROM `test`.`FIELD_TRIP` WHERE `field_trip`.`eventid` = 2*/
+		$this->conn->query("DELETE FROM FIELD_TRIP WHERE date='$date' AND destination='$destination' AND startTime='$startTime' AND endTime='$endTime' LIMIT 1");
+	}
 }

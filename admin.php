@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/New_York');
 // inheritance
 require_once 'classes/validate.php';
 require_once 'classes/mysql.php';

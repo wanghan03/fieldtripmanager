@@ -1,4 +1,3 @@
-<!link rel="stylesheet" href="css/calendar.css" />
 <?php
 class calendar{
 	/* draws a calendar */

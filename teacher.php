@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/New_York');
 require_once 'classes/validate.php';
 require_once 'classes/mysql.php';
 
@@ -34,6 +35,9 @@ $getpage = isset($_GET['page']) ? $_GET['page'] : "";
 			break;
 		case "request2":
 			include("teacherpages/request2.php");
+			break;
+		case "deleted":
+			include("teacherpages/deleted.php");
 			break;
 		case "about":
 			include("teacherpages/about.php");
