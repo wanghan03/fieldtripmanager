@@ -16,11 +16,13 @@ if ($array != 0){
 			$display .= ' '.$array[$row][endTime].')';
 			$display .= '<br>Class/Hour: <i>'.$array[$row][classhour].'</i>';
 			$display .= '<br>Cost: $<i>'.$array[$row][cost].'</i>, Funded by: <i>'.$fundedby.'</i>';
+			$display .= '<br>Number of students going: $<i>'.$array[$row][numstudent].'</i>';
 			$display .= '<br><br>Trip Objective: <i>'.$array[$row][objective].'</i>';
 			$display .= '<br><br>In-class Preparation: <i>'.$array[$row][classactivities].'</i>';
 			$display .= '<br><br>Why: <i>'.$array[$row][why].'</i>';
 			$display .= '<br><br>Follow-up Activities: <i>'.$array[$row][followup].'</i>';
-			$display .= '<br><center><input type=submit value="Approve this Trip"></center>';
+			$display .= '<center><form style="display:inline-block;" method=post action="?page=approve&trip='.$array[$row][eventid].'"><input type=submit value="Approve this Trip"></form>';
+			$display .= '<form style="display:inline-block;" method=post action="?page=confirm&trip='.$array[$row][eventid].'"><input type=submit value="Reject this Trip"></form>';
 			$display .='</p></div><br>';
 			$count++;
 		}

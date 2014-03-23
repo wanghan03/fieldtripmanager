@@ -1,4 +1,8 @@
 <?php
+date_default_timezone_set('America/New_York');
+// inheritance
+require_once 'mysql.php';
+
 class calendar{
 	/* draws a calendar */
 	function draw_calendar($month,$year,$events = array()){
@@ -41,8 +45,18 @@ class calendar{
 			// input event into calendar
 			$eventDay = $year.'-'.$month.'-'.$i;
 				if(isset($events[$eventDay])) { // if there are events on $eventDay
-					foreach($events[$eventDay] as $event) { // for each event, add to calendar
-						$calendar.= '<div class="event">'.$event.'</div>';
+					foreach($events[$eventDay] as $eventid) { // for each event, add to calendar
+						$mysql = new mysql();
+						$tripdetail = $mysql->get_specifictrip($eventid);
+						$calendar.= '<div class="event"';
+						if($tripdetail[approval]==0){
+							$calendar.=' style="color:#FF6666;"';
+						}
+						if($tripdetail[approval]==-1){
+							$calendar.=' style="color:#6666E0; text-decoration:line-through;"';
+						}
+						$calendar.='><a style="text-decoration:none; color:inherit;" href="?page=detail2&trip='.$tripdetail[eventid].'"';
+						$calendar.='>'.$tripdetail[destination].'</div>';
 					}
 					$calendar.='</td>';
 				}

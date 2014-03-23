@@ -39,6 +39,9 @@ $getpage = isset($_GET['page']) ? $_GET['page'] : "";
 		case "deleted":
 			include("teacherpages/deleted.php");
 			break;
+		case "detail":
+			include("teacherpages/detail.php");
+			break;
 		case "about":
 			include("teacherpages/about.php");
 		break;

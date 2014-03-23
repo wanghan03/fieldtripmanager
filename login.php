@@ -50,7 +50,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'logout') {
 		echo "<br>";
 		echo "<br>Test Admin | username: admin, password: admin";
 		echo "<br>Test Teacher | username: teacher, password: teacher";
-		echo "<br>Test Student | username: student, password: student";
+		//echo "<br>Test Student | username: student, password: student";
     ?>
 </div><!--end login-->
 </body>

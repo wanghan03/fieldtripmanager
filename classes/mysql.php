@@ -38,6 +38,7 @@ class mysql {
 		return 0;
 	}
 	
+	// get all field trip by specified user
 	function get_fieldtrips($userid){
 		$result = $this->conn->query("SELECT * FROM FIELD_TRIP WHERE userid = '$userid'");
 		$array = array();
@@ -51,6 +52,16 @@ class mysql {
 		return 0;
 	}
 	
+	// get single trip by event id
+	function get_specifictrip($eventid){
+		$result = $this->conn->query("SELECT * FROM FIELD_TRIP WHERE eventid = '$eventid' LIMIT 1");
+		if ($data = mysqli_fetch_array($result)){
+			return $data;
+		}
+		return 0;
+	}
+	
+	// get every single field trip
 	function get_alltrips(){
 		$result = $this->conn->query("SELECT * FROM FIELD_TRIP");
 		$array = array();
@@ -64,11 +75,26 @@ class mysql {
 		return 0;
 	}
 	
+	// creating trip
 	function new_trip($userid,$date,$startTime,$endTime,$destination,$classhour,$numstudent,$cost,$fund,$objective,$classactivities,$why,$followup){
-		$this->conn->query("INSERT INTO FIELD_TRIP (userid, date, startTime, endTime, destination, classhour, numstudent, cost, fund, objective, classactivities, why, followup) VALUES ('$userid','$date','$startTime','$endTime','$destination','$classhour','$numstudent','$cost','$fund','$objective','$classactivities','$why','$followup')");	
+		$this->conn->query("INSERT INTO FIELD_TRIP (userid, date, startTime, endTime, destination, classhour, numstudent, cost, fund, objective, classactivities, why, followup) VALUES ('$userid','$date','$startTime','$endTime','$destination','$classhour','$numstudent','$cost','$fund','$objective','$classactivities','$why','$followup')");
 	}
-
-	function delete_trip($date, $destination, $startTime, $endTime){
-		$this->conn->query("DELETE FROM FIELD_TRIP WHERE date='$date' AND destination='$destination' AND startTime='$startTime' AND endTime='$endTime' LIMIT 1");
+	
+	// deleting trip
+	function delete_trip($eventid){
+		$this->conn->query("DELETE FROM FIELD_TRIP WHERE eventid='$eventid' LIMIT 1");
+	}
+	
+	// approve trip
+	function approve_trip($eventid){
+		$this->conn->query("UPDATE FIELD_TRIP SET approval = 1 WHERE eventid = '$eventid'");
+		$this->conn->query("UPDATE FIELD_TRIP SET approvalDate = now() WHERE eventid = '$eventid'");
+	}
+	
+	// reject trip
+	function reject_trip($eventid, $comments){
+		$this->conn->query("UPDATE FIELD_TRIP SET approval = -1 WHERE eventid = '$eventid'");
+		$this->conn->query("UPDATE FIELD_TRIP SET approvalDate = now() WHERE eventid = '$eventid'");
+		$this->conn->query("UPDATE FIELD_TRIP SET comments = '$comments' WHERE eventid = '$eventid'");
 	}
 }

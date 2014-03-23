@@ -39,8 +39,23 @@ $getpage = isset($_GET['page']) ? $_GET['page'] : "";
 		case "agenda":
 			include("adminpages/agenda.php");
 			break;
+		case "detail":
+			include("adminpages/detail.php");
+			break;
+		case "detail2":
+			include("adminpages/detail2.php");
+			break;
 		case "waiting":
 			include("adminpages/waiting.php");
+			break;
+		case "approve":
+			include("adminpages/approve.php");
+			break;
+		case "confirm": // confirm rejecting
+			include("adminpages/confirm.php");
+			break;
+		case "reject":
+			include("adminpages/reject.php");
 		break;
 		}
 

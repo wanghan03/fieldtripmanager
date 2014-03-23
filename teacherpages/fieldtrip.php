@@ -11,22 +11,23 @@ if ($array != 0){
 			$display .= '<h4>'.$array[$row][date].'</h4>';
 			$display .= '<p';
 			if ($array[$row][approval]==0){
-				$display .= ' style=color:red;';
+				$display .= ' style=color:#FF6666;';
+			}
+			if ($array[$row][approval]==-1){
+				$display .= ' style="color:#6666E0; text-decoration:line-through;"';
 			}
 			$display .= '>'.$array[$row][destination];
 			$display .= ' ('.$array[$row][startTime].' -';
 			$display .= ' '.$array[$row][endTime].')';
 			$display .= '<br>Class/Hour: '.$array[$row][classhour];
-			//
-			$destination = str_replace(" ", "+", $array[$row][destination]);
-			$start = str_replace(":", "%3A", $array[$row][startTime]);
-			$end = str_replace(":", "%3A", $array[$row][endTime]);
-			$class = str_replace(" ", "+", $array[$row][classhour]);
-			
-			$display .= '<br><form method=post action="?page=deleted&date='.$array[$row][date].'&destination='.$destination.'&start='.$start.'&end='.$end.'&class='.$class.'"><input type=submit value="Delete this Trip"></form>';
+			$display .= '<br>Number of students going: '.$array[$row][numstudent];
+			$display .= '<center><form style="display:inline-block;" method=post action="?page=detail&trip='.$array[$row][eventid].'"><input type=submit value="Trip Detail"></form>';
+			if ($array[$row][approval]!=1){
+				$display .= '<form style="display:inline-block;" method=post action="?page=deleted&trip='.$array[$row][eventid].'"><input type=submit value="Delete this Trip"></form>';
+			}
+			$display .= '</center>';
 			$display .='</p>';
 			$count++;
-			//" onclick="delete('.$array[$row][date].','.$array[$row][destination].','.$array[$row][startTime].','.$array[$row][endTime].');
 		}
 	}
 }
@@ -37,4 +38,4 @@ if ($count==0){
 $display .= '</div>';
 echo $display;
 ?>
-<center><p>Note: events displayed in <a style=color:red;>red</a> are not yet approved.</p></center>
+<center><p>Note: events displayed in <a style=color:#FF6666;>red</a> are pending approval, and events displayed in <a style=color:#6666E0;>blue</a> are rejected.</p></center>

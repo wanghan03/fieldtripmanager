@@ -5,11 +5,11 @@
 <body>
 <?php
 $array = $mysql->get_alltrips();
-$events = array(); // [date][destination]
+$events = array(); // [date][eventid]
 for($row = 0; $row < count($array); $row++){
 	$date = $array[$row][date];
-	$destination = $array[$row][destination];
-	$events[$date][] = $destination;
+	$eventid = $array[$row][eventid];
+	$events[$date][] = $eventid;
 }
 
 

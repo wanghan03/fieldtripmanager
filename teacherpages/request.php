@@ -8,10 +8,6 @@ function validateButton (button){
 	return false;
 }
 
-function validateFormb(){
-	return true;
-}
-
 function validateForm(){
 	var x = document.forms["requestform"];
 	var dateformat = /^[0-9]{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/;
@@ -65,14 +61,14 @@ function validateForm(){
 		x["atime"].focus();
 		return false;
 	}
-	if(!validateButton(x["sub"])){
+/*	if(!validateButton(x["sub"])){
 		alert("\"Sub arrangement made?\" is a required field");
 		return false;
 	}
 	if(!validateButton(x["guest"])){
 		alert("\"Guest teacher needed for\" is a required field");
 		return false;
-	}
+	}*/
 	if(x["cost"].value==null || x["cost"].value==""){
 		alert("\"Cost per student\" is a required field (note: please exclude the '$' sign)");
 		x["cost"].focus();
@@ -85,7 +81,7 @@ function validateForm(){
 			return false;
 		}
 	}
-	if(x["busConfName"].value==null || x["busConfName"].value=="" || x["busConfDate"].value==null || x["busConfDate"].value==""){
+/*	if(x["busConfName"].value==null || x["busConfName"].value=="" || x["busConfDate"].value==null || x["busConfDate"].value==""){
 		alert("\"Bus confirmation\" is a required field");
 		x["busConfName"].focus();
 		return false;
@@ -95,7 +91,7 @@ function validateForm(){
 		alert("Invalid date format (yyyy-mm-dd)");
 		x["busConfDate"].focus();
 		return false;
-	}
+	}*/
 	if(x["objective"].value=="" || x["activities"].value=="" || x["why"].value=="" || x["follow-up"].value==""){
 		alert("Please answer the last 4 questions.");
 		if(x["objective"].value==""){ x["objective"].focus(); }
@@ -104,9 +100,34 @@ function validateForm(){
 		else if(x["follow-up"].value==""){ x["follow-up"].focus(); }
 		return false;
 	}
+	if(x["class"].value.length>100){
+		alert("Too many characters detected, please limit \"Class/Hour\" to 100 characters or less");
+		x["class"].focus();
+		return false;
+	}
+	if(x["objective"].value.length>500){
+		alert("Too many characters detected, please limit response to 500 characters or less");
+		x["objective"].focus();
+		return false;
+	}
+	if(x["activities"].value.length>500){
+		alert("Too many characters detected, please limit response to 500 characters or less");
+		x["activities"].focus();
+		return false;
+	}
+	if(x["why"].value.length>500){
+		alert("Too many characters detected, please limit response to 500 characters or less");
+		x["why"].focus();
+		return false;
+	}
+	if(x["follow-up"].value.length>500){
+		alert("Too many characters detected, please limit response to 500 characters or less");
+		x["follow-up"].focus();
+		return false;
+	}
 	else{
-		alert("Validated");
-		return true;
+		//alert("Validated");
+		return false;
 	}
 
 }
